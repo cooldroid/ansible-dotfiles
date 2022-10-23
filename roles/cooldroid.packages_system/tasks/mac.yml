@@ -1,0 +1,10 @@
+---
+- name: Install packages via brew  # noqa 403
+  homebrew:
+    name:
+      - bat
+      - fd
+      - jq
+      - the_silver_searcher
+      - tree
+    state: latest

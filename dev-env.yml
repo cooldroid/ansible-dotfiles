@@ -3,13 +3,15 @@
 
 - name: set up dev env
   hosts: all
+  become: true
   roles:
-    - {role: dustinspecker.fzf, tags: ['fzf']}
+    - {role: cooldroid.packages_system, tags: ['packages_system']}
+    - {role: cooldroid.packages_setup, tags: ['packages_setup']}
     - {role: dustinspecker.git, tags: ['git']}
-    - {role: dustinspecker.go, tags: ['go']}
-    - {role: dustinspecker.hub, tags: ['hub']}
-    - {role: dustinspecker.nvm, tags: ['nvm']}
-    - {role: dustinspecker.packages_system, tags: ['packages_system']}
-    - {role: dustinspecker.tmux, tags: ['tmux']}
-    - {role: dustinspecker.vim, tags: ['vim']}
-    - {role: dustinspecker.zsh, tags: ['zsh']}
+    - {role: dustinspecker.fzf, tags: ['fzf']}
+    #- {role: dustinspecker.go, tags: ['go']}
+    #- {role: dustinspecker.hub, tags: ['hub']}
+    #- {role: dustinspecker.nvm, tags: ['nvm']}
+    #- {role: dustinspecker.tmux, tags: ['tmux']}
+    #- {role: dustinspecker.vim, tags: ['vim']}
+    #- {role: dustinspecker.zsh, tags: ['zsh']}

@@ -1,0 +1,25 @@
+---
+- hosts: all
+  become: true
+  vars:
+    pri_domain_name: workgroup
+    samba_groups:
+      - bagaria
+    samba_users:
+      - name: bagaria
+        groups:
+          - bagaria
+        smbpasswd: Wipro@123
+    samba_shares:
+      - name: shared
+        share_path: "/media/bagaria"
+        browsable: "yes"
+        folder_perms: "0755"
+        group: bagaria
+        guest_ok: "yes"
+        owner: nobody
+        read_only: "no"
+        writable: "yes"
+
+  roles:
+    - mrlesmithjr.samba

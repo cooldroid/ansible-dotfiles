@@ -1,0 +1,27 @@
+---
+- name: Install packages via apt
+  apt:
+    name:
+      - apt-transport-https, jq, curl, tree, xz-utils
+      - silversearcher-ag
+    state: latest
+  become: true
+
+- name: Install bat via .deb from github release
+  apt:
+    deb: https://github.com/sharkdp/bat/releases/download/v{{ BAT_VERSION }}/bat_{{ BAT_VERSION }}_amd64.deb
+  become: true
+
+- name: Install fd via .deb from github release
+  apt:
+    deb: https://github.com/sharkdp/fd/releases/download/v{{ FD_VERSION }}/fd_{{ FD_VERSION }}_amd64.deb
+  become: true
+
+- name: Add user "bagaria" to sudo
+  lineinfile:
+    path: /etc/sudoers.d/bagaria
+    line: 'bagaria ALL=(ALL) NOPASSWD: ALL'
+    state: present
+    mode: 0440
+    create: yes
+    validate: 'visudo -cf %s'
